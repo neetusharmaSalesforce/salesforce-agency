@@ -1,4 +1,6 @@
 import Container from "./Container";
+import Button from "./Button";
+import Dashboard from "./Dashboard";
 
 export default function Hero() {
   return (
@@ -13,7 +15,7 @@ export default function Hero() {
               Salesforce Consulting Partner
             </p>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gray-900">
+            <h1 className="text-4xl font-bold leading-tight text-gray-900 md:text-5xl lg:text-6xl">
               Build Better Customer Relationships with Salesforce
             </h1>
 
@@ -24,25 +26,22 @@ export default function Hero() {
             </p>
 
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-              <button className="rounded-lg bg-blue-600 px-6 py-3 font-medium text-white transition hover:bg-blue-700">
-                Book Free Consultation
-              </button>
 
-              <button className="rounded-lg border border-gray-300 px-6 py-3 font-medium transition hover:bg-gray-100">
+              <Button>
+                Book Free Consultation
+              </Button>
+
+              <Button variant="secondary">
                 Explore Services
-              </button>
+              </Button>
+
             </div>
 
           </div>
 
           {/* Right Side */}
-          <div className="flex h-[300px] w-full max-w-lg items-center justify-center rounded-2xl border-2 border-dashed border-gray-300 bg-white lg:h-[450px]">
 
-            <p className="text-gray-500">
-              Salesforce Dashboard Image
-            </p>
-
-          </div>
+          <Dashboard />
 
         </div>
       </Container>

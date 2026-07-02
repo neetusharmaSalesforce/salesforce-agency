@@ -1,5 +1,6 @@
 import { siteConfig } from "../constants/site";
 import Container from "./Container";
+import Button from "./Button";
 
 export default function Navbar() {
   return (
@@ -38,9 +39,9 @@ export default function Navbar() {
           </ul>
 
           {/* Button */}
-          <button className="rounded-lg bg-blue-600 px-5 py-3 text-white transition hover:bg-blue-700">
-            Book a Call
-          </button>
+          <Button>
+           Book a Call
+          </Button>
 
         </nav>
       </Container>
