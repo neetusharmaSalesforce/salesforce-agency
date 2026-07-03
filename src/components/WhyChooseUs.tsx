@@ -1,4 +1,5 @@
 import Container from "./Container";
+import SectionHeading from "./SectionHeading";
 
 const features = [
   {
@@ -31,21 +32,11 @@ export default function WhyChooseUs() {
   return (
     <section className="bg-white py-24">
       <Container>
-        <div className="text-center">
-          <p className="font-semibold uppercase tracking-widest text-blue-600">
-            Why Choose Us
-          </p>
-
-          <h2 className="mt-4 text-4xl font-bold text-gray-900">
-            Your Trusted Salesforce Consulting Partner
-          </h2>
-
-          <p className="mx-auto mt-6 max-w-3xl text-lg text-gray-600">
-            We combine Salesforce expertise with industry experience to help
-            businesses streamline operations, improve customer experience and
-            accelerate growth.
-          </p>
-        </div>
+           <SectionHeading
+              subtitle="Why Choose Us"
+              title="Your Trusted Salesforce Consulting Partner"
+              description="We combine Salesforce expertise with industry experience to help businesses streamline operations, improve customer experience and accelerate growth."
+            />
 
         <div className="mt-16 grid gap-8 md:grid-cols-2">
           {features.map((feature) => (

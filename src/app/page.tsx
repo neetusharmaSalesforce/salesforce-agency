@@ -5,6 +5,8 @@ import WhyChooseUs from "../components/WhyChooseUs";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import TrustedCompanies from "../components/TrustedCompanies";
+import Process from "../components/Process";
+import Testimonials from "../components/Testimonials";
 
 export default function Home() {
   return (
@@ -14,6 +16,8 @@ export default function Home() {
       <TrustedCompanies />
       <Services />
       <WhyChooseUs />
+      <Testimonials />
+      <Process />
       <Contact />
       <Footer />
     </main>

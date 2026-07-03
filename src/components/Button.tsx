@@ -8,12 +8,14 @@ export default function Button({
   variant = "primary",
 }: ButtonProps) {
   const baseClasses =
-    "rounded-lg px-6 py-3 font-medium transition duration-300";
+    "rounded-xl px-6 py-3 font-semibold transition-all duration-300 hover:scale-105";
 
   const variants = {
-    primary: "bg-blue-600 text-white hover:bg-blue-700",
+    primary:
+      "bg-blue-600 text-white hover:bg-blue-700 shadow-lg hover:shadow-xl",
+
     secondary:
-      "border border-gray-300 text-gray-800 hover:bg-gray-100",
+      "border border-gray-300 bg-white text-gray-800 hover:bg-gray-100",
   };
 
   return (
