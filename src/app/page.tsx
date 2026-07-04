@@ -7,7 +7,7 @@ import Footer from "../components/Footer";
 import TrustedCompanies from "../components/TrustedCompanies";
 import Process from "../components/Process";
 import Testimonials from "../components/Testimonials";
-
+import CTA from "../components/CTA";
 export default function Home() {
   return (
     <main>
@@ -17,6 +17,7 @@ export default function Home() {
       <Services />
       <WhyChooseUs />
       <Testimonials />
+      <CTA />
       <Process />
       <Contact />
       <Footer />

@@ -30,7 +30,7 @@ const features = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="bg-white py-24">
+    <section id="about" className="py-24">
       <Container>
            <SectionHeading
               subtitle="Why Choose Us"

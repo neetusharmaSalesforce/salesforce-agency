@@ -31,3 +31,7 @@ body {
   --light: #f8fafc;
   --border: #e5e7eb;
 }
+
+html {
+  scroll-behavior: smooth;
+}
