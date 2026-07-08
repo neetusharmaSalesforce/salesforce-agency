@@ -4,6 +4,7 @@ import Dashboard from "./Dashboard";
 import Badge from "./Badge";
 import FadeUp from "./FadeUp";
 import SlideInRight from "./SlideInRight";
+import AnimatedCounter from "./AnimatedCounter";
 
 export default function Hero() {
   return (
@@ -51,6 +52,28 @@ export default function Hero() {
               <Button variant="secondary">
                 Explore Services
               </Button>
+
+            </div>
+
+            <div className="mt-10 grid grid-cols-3 gap-6 border-t border-gray-200 pt-8">
+
+              <AnimatedCounter
+                end={200}
+                suffix="+"
+                label="Happy Clients"
+              />
+
+              <AnimatedCounter
+                end={500}
+                suffix="+"
+                label="Projects Delivered"
+              />
+
+              <AnimatedCounter
+                end={99}
+                suffix="%"
+                label="Client Satisfaction"
+              />
 
             </div>
 

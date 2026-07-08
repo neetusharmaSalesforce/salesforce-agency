@@ -9,6 +9,7 @@ import Process from "../components/Process";
 import Testimonials from "../components/Testimonials";
 import CTA from "../components/CTA";
 import Industries from "@/components/Industries";
+import CaseStudies from "@/components/CaseStudies";
 export default function Home() {
   return (
     <main>
@@ -17,6 +18,7 @@ export default function Home() {
       <TrustedCompanies />
       <Services />
       <Industries />
+      <CaseStudies />
       <WhyChooseUs />
       <Testimonials />
       <CTA />

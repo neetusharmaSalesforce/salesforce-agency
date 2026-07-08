@@ -1,12 +1,5 @@
 import Container from "./Container";
-
-const companies = [
-  "TechNova",
-  "CloudSync",
-  "GlobalSoft",
-  "DataFlow",
-  "VisionX",
-];
+import { trustedCompanies } from "@/data/trustedCompanies";
 
 export default function TrustedCompanies() {
   return (
@@ -17,10 +10,10 @@ export default function TrustedCompanies() {
         </p>
 
         <div className="grid grid-cols-2 gap-8 text-center md:grid-cols-3 lg:grid-cols-5">
-          {companies.map((company) => (
+          {trustedCompanies.map((company) => (
             <div
               key={company}
-              className="rounded-xl border border-gray-200 bg-gray-50 py-5 text-lg font-semibold text-gray-700 transition hover:border-blue-600 hover:text-blue-600"
+              className="rounded-xl border border-gray-200 bg-gray-50 py-5 text-lg font-semibold text-gray-700 transition-all duration-300 hover:-translate-y-1 hover:border-blue-600 hover:bg-blue-50 hover:text-blue-600 hover:shadow-lg"
             >
               {company}
             </div>
