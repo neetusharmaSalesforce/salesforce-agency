@@ -8,6 +8,7 @@ import TrustedCompanies from "../components/TrustedCompanies";
 import Process from "../components/Process";
 import Testimonials from "../components/Testimonials";
 import CTA from "../components/CTA";
+import Industries from "@/components/Industries";
 export default function Home() {
   return (
     <main>
@@ -15,6 +16,7 @@ export default function Home() {
       <Hero />
       <TrustedCompanies />
       <Services />
+      <Industries />
       <WhyChooseUs />
       <Testimonials />
       <CTA />

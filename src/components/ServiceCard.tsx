@@ -1,17 +1,21 @@
 import { LucideIcon } from "lucide-react";
+import FadeUp from "./FadeUp";
 
 type ServiceCardProps = {
   title: string;
   description: string;
   icon: LucideIcon;
+  delay?: number;
 };
 
 export default function ServiceCard({
   title,
   description,
   icon: Icon,
+  delay = 0,
 }: ServiceCardProps) {
   return (
+  <FadeUp delay={delay}>
     <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
       <div className="mb-6 inline-flex rounded-xl bg-blue-50 p-4">
         <Icon size={36} className="text-blue-600" />
@@ -24,9 +28,11 @@ export default function ServiceCard({
       <p className="mt-4 leading-7 text-gray-600">
         {description}
       </p>
+
       <p className="mt-6 font-semibold text-blue-600">
         Learn More →
       </p>
     </div>
-  );
+  </FadeUp>
+);
 }

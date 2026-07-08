@@ -2,17 +2,20 @@ import Container from "./Container";
 import Button from "./Button";
 import Dashboard from "./Dashboard";
 import Badge from "./Badge";
+import FadeUp from "./FadeUp";
+import SlideInRight from "./SlideInRight";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-24">
+    <section id="home" className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-24">
       <div className="absolute -top-32 -left-32 h-72 w-72 rounded-full bg-blue-200/40 blur-3xl"></div>
 
       <div className="absolute -bottom-32 -right-32 h-80 w-80 rounded-full bg-indigo-200/40 blur-3xl"></div>
       <Container>
-        <div className="flex flex-col-reverse items-center gap-12 lg:flex-row lg:justify-between">
+        <div className="flex flex-col-reverse items-start gap-12 lg:flex-row lg:items-start lg:justify-between">
 
           {/* Left Side */}
+          <FadeUp>
           <div className="w-full max-w-2xl text-center lg:text-left">
 
             <Badge>
@@ -52,10 +55,13 @@ export default function Hero() {
             </div>
 
           </div>
+          </FadeUp>
 
           {/* Right Side */}
 
+          <SlideInRight delay={0.2}>
           <Dashboard />
+        </SlideInRight>
 
         </div>
       </Container>
