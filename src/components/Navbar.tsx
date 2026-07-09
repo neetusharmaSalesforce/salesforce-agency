@@ -7,16 +7,16 @@ import Button from "./Button";
 const menuItems = [
   {
     label: "Services",
-    href: "#services",
+    href: "/services",
   },
   {
     label: "Industries",
     href: "#",
   },
   {
-    label: "About",
-    href: "#about",
-  },
+  label: "About",
+  href: "/about",
+ },
   {
     label: "Case Studies",
     href: "#",

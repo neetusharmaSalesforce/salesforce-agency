@@ -1,46 +1,47 @@
 import {
   Cloud,
-  Headset,
   Settings,
-  ChartColumn,
-  Link,
-  Rocket,
+  Workflow,
+  Database,
+  ShieldCheck,
+  Headphones,
 } from "lucide-react";
+
 export const services = [
+          {
+          slug: "sales-cloud",
+          title: "Sales Cloud",
+          description: "...",
+          icon: Cloud,
+        },
   {
-    title: "Sales Cloud",
-    description:
-      "Boost your sales process with customized Salesforce Sales Cloud solutions.",
-    icon: Cloud,
-  },
+  slug: "service-cloud",
+  title: "Service Cloud",
+  description: "...",
+  icon: Headphones,
+},
   {
-    title: "Service Cloud",
-    description:
-      "Deliver exceptional customer support using Salesforce Service Cloud.",
-    icon: Headset,
-  },
+  slug: "marketing-cloud",
+  title: "Marketing Cloud",
+  description: "...",
+  icon: Workflow,
+},
   {
-    title: "Salesforce Implementation",
-    description:
-      "Complete Salesforce setup, customization and deployment.",
-    icon: Settings,
-  },
+  slug: "salesforce-development",
+  title: "Salesforce Development",
+  description: "...",
+  icon: Settings,
+},
   {
-    title: "CRM Consulting",
-    description:
-      "Expert consulting to improve CRM strategy and business growth.",
-    icon: ChartColumn,
-  },
+  slug: "crm-integration",
+  title: "CRM Integration",
+  description: "...",
+  icon: Database,
+},
   {
-    title: "Integration",
-    description:
-      "Connect Salesforce with ERP, websites and third-party systems.",
-    icon: Link,
-  },
-  {
-    title: "Managed Services",
-    description:
-      "Ongoing Salesforce support, optimization and maintenance.",
-    icon: Rocket,
-  },
+  slug: "managed-support",
+  title: "Managed Support",
+  description: "...",
+  icon: ShieldCheck,
+},
 ];
