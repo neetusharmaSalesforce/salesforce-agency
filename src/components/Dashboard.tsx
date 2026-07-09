@@ -3,7 +3,7 @@ import RevenueChart from "./RevenueChart";
 import ActivityCard from "./ActivityCard";
 import DashboardHeader from "./DashboardHeader";
 import RecentDeals from "./RecentDeals";
-
+import LiveActivity from "./LiveActivity";
 import {
   stats,
   recentDeals,
@@ -63,6 +63,8 @@ export default function Dashboard() {
         </div>
 
         <RevenueChart />
+
+        <LiveActivity />
 
         {/* Sales Pipeline */}
         <div className="mt-8 rounded-2xl border border-gray-100 bg-gray-50 p-5">

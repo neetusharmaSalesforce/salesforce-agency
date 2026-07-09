@@ -10,6 +10,7 @@ import Testimonials from "../components/Testimonials";
 import CTA from "../components/CTA";
 import Industries from "@/components/Industries";
 import CaseStudies from "@/components/CaseStudies";
+import FAQ from "@/components/FAQ";
 export default function Home() {
   return (
     <main>
@@ -21,6 +22,7 @@ export default function Home() {
       <CaseStudies />
       <WhyChooseUs />
       <Testimonials />
+      <FAQ />
       <CTA />
       <Process />
       <Contact />
