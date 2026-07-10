@@ -8,40 +8,46 @@ import {
 } from "lucide-react";
 
 export const services = [
-          {
-          slug: "sales-cloud",
-          title: "Sales Cloud",
-          description: "...",
-          icon: Cloud,
-        },
   {
-  slug: "service-cloud",
-  title: "Service Cloud",
-  description: "...",
-  icon: Headphones,
-},
+    slug: "sales-cloud",
+    title: "Sales Cloud",
+    description:
+      "Automate your sales process, manage leads and close deals faster with Salesforce Sales Cloud.",
+    icon: Cloud,
+  },
   {
-  slug: "marketing-cloud",
-  title: "Marketing Cloud",
-  description: "...",
-  icon: Workflow,
-},
+    slug: "service-cloud",
+    title: "Service Cloud",
+    description:
+      "Deliver exceptional customer support with omnichannel service and case management.",
+    icon: Headphones,
+  },
   {
-  slug: "salesforce-development",
-  title: "Salesforce Development",
-  description: "...",
-  icon: Settings,
-},
+    slug: "marketing-cloud",
+    title: "Marketing Cloud",
+    description:
+      "Create personalized marketing campaigns using Salesforce Marketing Cloud.",
+    icon: Workflow,
+  },
   {
-  slug: "crm-integration",
-  title: "CRM Integration",
-  description: "...",
-  icon: Database,
-},
+    slug: "salesforce-development",
+    title: "Salesforce Development",
+    description:
+      "Build custom Apex, LWC and Visualforce solutions tailored to your business.",
+    icon: Settings,
+  },
   {
-  slug: "managed-support",
-  title: "Managed Support",
-  description: "...",
-  icon: ShieldCheck,
-},
+    slug: "crm-integration",
+    title: "CRM Integration",
+    description:
+      "Integrate Salesforce with ERP, payment gateways and third-party applications.",
+    icon: Database,
+  },
+  {
+    slug: "managed-support",
+    title: "Managed Support",
+    description:
+      "Ongoing Salesforce maintenance, optimization and technical support for your business.",
+    icon: ShieldCheck,
+  },
 ];
