@@ -11,7 +11,6 @@ export default function CaseStudies() {
       className="bg-gray-50 py-24"
     >
       <Container>
-
         <SectionHeading
           subtitle="SUCCESS STORIES"
           title="Real Results for Real Businesses"
@@ -31,7 +30,6 @@ export default function CaseStudies() {
             />
           ))}
         </div>
-
       </Container>
     </section>
   );

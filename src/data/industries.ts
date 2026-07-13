@@ -5,6 +5,8 @@ import {
   GraduationCap,
   Landmark,
   Factory,
+  Truck,
+  Laptop,
 } from "lucide-react";
 
 export const industries = [
@@ -43,5 +45,17 @@ export const industries = [
     description:
       "Lead management and property sales automation.",
     icon: Building2,
+  },
+  {
+    title: "Logistics",
+    description:
+      "Shipment tracking, warehouse management and logistics automation.",
+    icon: Truck,
+  },
+  {
+    title: "Technology",
+    description:
+      "Scalable Salesforce solutions for SaaS and technology companies.",
+    icon: Laptop,
   },
 ];
