@@ -11,6 +11,7 @@ import CTA from "../components/CTA";
 import Industries from "@/components/Industries";
 import CaseStudies from "@/components/CaseStudies";
 import FAQ from "@/components/FAQ";
+import Technologies from "@/components/Technologies";
 export default function Home() {
   return (
     <main>
@@ -18,10 +19,11 @@ export default function Home() {
       <Hero />
       <TrustedCompanies />
       <Services />
+      <Technologies />
       <Industries />
       <CaseStudies />
       <WhyChooseUs />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <FAQ />
       <CTA />
       <Process />

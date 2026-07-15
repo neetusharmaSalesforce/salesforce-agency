@@ -18,6 +18,10 @@ export default function ConsultationForm({ onClose }: Props) {
     requirement: "",
   });
 
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -31,6 +35,27 @@ export default function ConsultationForm({ onClose }: Props) {
     e: React.FormEvent<HTMLFormElement>
   ) => {
     e.preventDefault();
+     const nameRegex = /^[A-Za-z ]{3,50}$/;
+
+if (!nameRegex.test(form.name.trim())) {
+  setErrorMessage(
+    "Please enter a valid full name (letters only)."
+  );
+  return;
+}
+
+const emailRegex =
+  /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+if (!emailRegex.test(form.email.trim())) {
+  setErrorMessage(
+    "Please enter a valid email address."
+  );
+  return;
+}
+    setLoading(true);
+    setSuccess("");
+    setErrorMessage("");
 
     try {
       const response = await fetch("/api/consultation", {
@@ -45,7 +70,9 @@ export default function ConsultationForm({ onClose }: Props) {
         throw new Error("Failed");
       }
 
-      alert("✅ Consultation booked successfully!");
+      setSuccess(
+        "✅ Consultation booked successfully! We will contact you shortly."
+      );
 
       setForm({
         name: "",
@@ -57,9 +84,16 @@ export default function ConsultationForm({ onClose }: Props) {
         requirement: "",
       });
 
-      onClose();
+      setTimeout(() => {
+        onClose();
+      }, 2000);
+
     } catch (error) {
-      alert("❌ Something went wrong.");
+      setErrorMessage(
+        "❌ Something went wrong. Please try again."
+      );
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -73,15 +107,37 @@ export default function ConsultationForm({ onClose }: Props) {
         Tell us about your project and we'll contact you shortly.
       </p>
 
-      <form onSubmit={handleSubmit} className="mt-8 space-y-5">
+      <form
+        onSubmit={handleSubmit}
+        className="mt-8 space-y-5"
+        autoComplete="on"
+      >
+        {success && (
+          <div className="rounded-xl border border-green-300 bg-green-50 px-4 py-3 text-green-700">
+            {success}
+          </div>
+        )}
+
+        {errorMessage && (
+          <div className="rounded-xl border border-red-300 bg-red-50 px-4 py-3 text-red-700">
+            {errorMessage}
+          </div>
+        )}
+
         <input
-          name="name"
-          placeholder="Full Name"
-          value={form.name}
-          onChange={handleChange}
-          className="w-full rounded-xl border border-gray-300 p-3"
-          required
-        />
+        type="text"
+        name="name"
+        placeholder="Full Name"
+        value={form.name}
+        onChange={handleChange}
+        autoComplete="name"
+        minLength={3}
+        maxLength={50}
+        pattern="[A-Za-z ]+"
+        title="Name should contain only letters and spaces."
+        className="w-full rounded-xl border border-gray-300 p-3"
+        required
+      />
 
         <input
           name="company"
@@ -89,33 +145,39 @@ export default function ConsultationForm({ onClose }: Props) {
           value={form.company}
           onChange={handleChange}
           className="w-full rounded-xl border border-gray-300 p-3"
+           autoComplete="organization"
         />
+
+       <input
+        type="email"
+        name="email"
+        placeholder="Email Address"
+        value={form.email}
+        onChange={handleChange}
+        autoComplete="email"
+        maxLength={100}
+        pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+        title="Please enter a valid email address."
+        className="w-full rounded-xl border border-gray-300 p-3"
+        required
+      />
 
         <input
-          type="email"
-          name="email"
-          placeholder="Email Address"
-          value={form.email}
-          onChange={handleChange}
-          className="w-full rounded-xl border border-gray-300 p-3"
-          required
-        />
-
-        <input
-          name="phone"
-          placeholder="Phone Number"
-          value={form.phone}
-          onChange={handleChange}
-          className="w-full rounded-xl border border-gray-300 p-3"
-        />
-
+        type="tel"
+        name="phone"
+        placeholder="Phone Number"
+        value={form.phone}
+        onChange={handleChange}
+        pattern="[0-9]{10}"
+        maxLength={10}
+        className="w-full rounded-xl border border-gray-300 p-3"
+        required
+      />
         <div className="grid gap-4 md:grid-cols-2">
           <input
-            type="date"
-            name="date"
-            value={form.date}
-            onChange={handleChange}
-            className="rounded-xl border border-gray-300 p-3"
+          type="date"
+          name="date"
+          min={new Date().toISOString().split("T")[0]}
           />
 
           <input
@@ -137,14 +199,18 @@ export default function ConsultationForm({ onClose }: Props) {
         />
 
         <div className="flex gap-4">
-          <Button type="submit">
-            Book Consultation
+          <Button
+            type="submit"
+            disabled={loading}
+          >
+            {loading ? "Booking..." : "Book Consultation"}
           </Button>
 
           <button
             type="button"
             onClick={onClose}
-            className="rounded-xl border border-gray-300 px-6 py-3 font-medium hover:bg-gray-100"
+            disabled={loading}
+            className="rounded-xl border border-gray-300 px-6 py-3 font-medium transition hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50"
           >
             Cancel
           </button>

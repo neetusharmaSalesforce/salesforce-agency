@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react";
 
 import Container from "./Container";
 import ConsultationButton from "./Consultation/ConsultationButton";
+import { usePathname } from "next/navigation";
 
 const menuItems = [
   {
@@ -30,7 +31,9 @@ const menuItems = [
   },
 ];
 
+
 export default function Navbar() {
+  const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -51,9 +54,19 @@ export default function Navbar() {
               <Link
                 key={item.label}
                 href={item.href}
-                className="font-medium text-gray-600 transition hover:text-blue-600"
+                className={`relative font-medium transition-colors duration-300 ${
+                  pathname === item.href
+                    ? "text-blue-600"
+                    : "text-gray-600 hover:text-blue-600"
+                }`}
+                
               >
                 {item.label}
+
+                {pathname === item.href && (
+                  <span className="absolute -bottom-2 left-0 h-0.5 w-full rounded-full bg-blue-600"></span>
+                )}
+                
               </Link>
             ))}
           </nav>
@@ -85,7 +98,11 @@ export default function Navbar() {
                   key={item.label}
                   href={item.href}
                   onClick={() => setMenuOpen(false)}
-                  className="border-b border-gray-100 py-4 font-medium text-gray-700 transition hover:text-blue-600"
+                  className={`border-b border-gray-100 py-4 font-medium transition-colors duration-300 ${
+                  pathname === item.href
+                    ? "text-blue-600"
+                    : "text-gray-700 hover:text-blue-600"
+                }`}
                 >
                   {item.label}
                 </Link>

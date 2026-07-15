@@ -5,7 +5,10 @@ import { services } from "../data/services";
 
 export default function Services() {
   return (
-    <section id="services" className="py-24">
+    <section
+      id="services"
+      className="py-24"
+    >
       <Container>
         <SectionHeading
           subtitle="Our Services"

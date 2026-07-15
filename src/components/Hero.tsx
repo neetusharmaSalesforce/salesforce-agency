@@ -1,3 +1,4 @@
+"use client";
 import Container from "./Container";
 import Button from "./Button";
 import Dashboard from "./Dashboard";
@@ -51,7 +52,16 @@ export default function Hero() {
 
               <ConsultationButton />
 
-              <Button variant="secondary">
+              <Button
+                variant="secondary"
+                onClick={() => {
+                  document
+                    .getElementById("services")
+                    ?.scrollIntoView({
+                      behavior: "smooth",
+                    });
+                }}
+              >
                 Explore Services
               </Button>
 
