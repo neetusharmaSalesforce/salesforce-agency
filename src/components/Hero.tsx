@@ -5,10 +5,14 @@ import Badge from "./Badge";
 import FadeUp from "./FadeUp";
 import SlideInRight from "./SlideInRight";
 import AnimatedCounter from "./AnimatedCounter";
+import ConsultationButton from "./Consultation/ConsultationButton";
 
 export default function Hero() {
   return (
-    <section id="home" className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-24">
+    <section
+        id="home"
+        className="relative bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-24"
+      >
       <div className="absolute -top-32 -left-32 h-72 w-72 rounded-full bg-blue-200/40 blur-3xl"></div>
 
       <div className="absolute -bottom-32 -right-32 h-80 w-80 rounded-full bg-indigo-200/40 blur-3xl"></div>
@@ -45,9 +49,7 @@ export default function Hero() {
 
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
 
-              <Button>
-                Book Free Consultation
-              </Button>
+              <ConsultationButton />
 
               <Button variant="secondary">
                 Explore Services

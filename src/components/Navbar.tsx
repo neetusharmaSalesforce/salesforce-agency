@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
 import Container from "./Container";
-import Button from "./Button";
+import ConsultationButton from "./Consultation/ConsultationButton";
 
 const menuItems = [
   {
@@ -46,7 +46,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Menu */}
-          <nav className="hidden gap-8 lg:flex">
+          <nav className="hidden items-center gap-8 lg:flex">
             {menuItems.map((item) => (
               <Link
                 key={item.label}
@@ -58,13 +58,9 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* Desktop Button */}
+          {/* Desktop Consultation Button */}
           <div className="hidden lg:block">
-            <Link href="/contact">
-              <Button>
-                Book Free Consultation
-              </Button>
-            </Link>
+            <ConsultationButton />
           </div>
 
           {/* Mobile Menu Button */}
@@ -88,22 +84,19 @@ export default function Navbar() {
                 <Link
                   key={item.label}
                   href={item.href}
-                  className="border-b border-gray-100 py-4 font-medium text-gray-700 transition-colors duration-300 hover:text-blue-600"
                   onClick={() => setMenuOpen(false)}
+                  className="border-b border-gray-100 py-4 font-medium text-gray-700 transition hover:text-blue-600"
                 >
                   {item.label}
                 </Link>
               ))}
 
-              <div className="mt-6">
-                <Link
-                  href="/contact"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  <Button>
-                    Book Free Consultation
-                  </Button>
-                </Link>
+              {/* Mobile Consultation Button */}
+              <div
+                className="mt-6"
+                onClick={() => setMenuOpen(false)}
+              >
+                <ConsultationButton />
               </div>
 
             </nav>

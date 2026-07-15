@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Container from "./Container";
 
 export default function Footer() {
@@ -8,9 +9,11 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h2 className="text-3xl font-bold text-blue-400">
-              SF Agency
-            </h2>
+            <Link href="/">
+              <h2 className="cursor-pointer text-3xl font-bold text-blue-400">
+                SF Agency
+              </h2>
+            </Link>
 
             <p className="mt-6 leading-7 text-gray-400">
               We help businesses implement, customize and optimize
@@ -25,9 +28,50 @@ export default function Footer() {
             </h3>
 
             <ul className="space-y-3 text-gray-400">
-              <li><a href="/services" className="hover:text-white">Services</a></li>
-              <li><a href="/about" className="hover:text-white">About</a></li>
-              <li><a href="#contact" className="hover:text-white">Contact</a></li>
+              <li>
+                <Link
+                  href="/services"
+                  className="transition hover:text-white"
+                >
+                  Services
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  href="/industries"
+                  className="transition hover:text-white"
+                >
+                  Industries
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  href="/case-studies"
+                  className="transition hover:text-white"
+                >
+                  Case Studies
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  href="/about"
+                  className="transition hover:text-white"
+                >
+                  About
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  href="/contact"
+                  className="transition hover:text-white"
+                >
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -38,10 +82,41 @@ export default function Footer() {
             </h3>
 
             <ul className="space-y-3 text-gray-400">
-              <li>Sales Cloud</li>
-              <li>Service Cloud</li>
-              <li>CRM Consulting</li>
-              <li>Integration</li>
+              <li>
+                <Link
+                  href="/services/sales-cloud"
+                  className="transition hover:text-white"
+                >
+                  Sales Cloud
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  href="/services/service-cloud"
+                  className="transition hover:text-white"
+                >
+                  Service Cloud
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  href="/services/crm-consulting"
+                  className="transition hover:text-white"
+                >
+                  CRM Consulting
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  href="/services/integration"
+                  className="transition hover:text-white"
+                >
+                  Integration
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -52,9 +127,9 @@ export default function Footer() {
             </h3>
 
             <ul className="space-y-3 text-gray-400">
-              <li>hello@sfagency.com</li>
-              <li>+91 98765 43210</li>
-              <li>Jaipur, Rajasthan</li>
+              <li>📧 hello@sfagency.com</li>
+              <li>📞 +91 98765 43210</li>
+              <li>📍 Jaipur, Rajasthan, India</li>
             </ul>
           </div>
 
@@ -63,7 +138,6 @@ export default function Footer() {
         <div className="mt-16 border-t border-gray-700 pt-8 text-center text-gray-500">
           © 2026 SF Agency. All rights reserved.
         </div>
-
       </Container>
     </footer>
   );

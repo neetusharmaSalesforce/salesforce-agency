@@ -1,6 +1,7 @@
 import Container from "./Container";
 import Button from "./Button";
 import SectionHeading from "./SectionHeading";
+import ConsultationButton from "./Consultation/ConsultationButton";
 
 export default function CTA() {
   return (
@@ -17,9 +18,7 @@ export default function CTA() {
             />
           <div className="mt-10 flex justify-center">
 
-            <Button variant="white">
-             Book Free Consultation
-            </Button>
+            <ConsultationButton />
 
           </div>
 
