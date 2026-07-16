@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+
 import BackToTop from "@/components/BackToTop";
 import Providers from "@/components/Providers";
+import OrganizationSchema from "@/components/SEO/OrganizationSchema";
+import WebsiteSchema from "@/components/SEO/WebsiteSchema";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -44,26 +48,48 @@ export const metadata: Metadata = {
   creator: "SF Agency",
 
   openGraph: {
-    title: "SF Agency | Salesforce Consulting & CRM Solutions",
-    description:
-      "Expert Salesforce consulting, implementation, customization and CRM automation services.",
-    url: "https://www.sfagency.com",
-    siteName: "SF Agency",
-    locale: "en_US",
-    type: "website",
-  },
+  title: "SF Agency | Salesforce Consulting & CRM Solutions",
+  description:
+    "Expert Salesforce consulting, implementation, customization and CRM automation services.",
+  url: "https://www.sfagency.com",
+  siteName: "SF Agency",
+  locale: "en_US",
+  type: "website",
+
+  images: [
+    {
+      url: "/images/og-image.jpg",
+      width: 1200,
+      height: 630,
+      alt: "SF Agency",
+    },
+  ],
+},
 
   twitter: {
-    card: "summary_large_image",
-    title: "SF Agency",
-    description:
-      "Salesforce Consulting & CRM Solutions for growing businesses.",
-  },
+  card: "summary_large_image",
+  title: "SF Agency",
+  description:
+    "Salesforce Consulting & CRM Solutions for growing businesses.",
+
+  images: ["/images/og-image.jpg"],
+},
 
   robots: {
     index: true,
     follow: true,
   },
+
+  icons: {
+  icon: [
+    { url: "/favicon.ico" },
+    { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+  ],
+  apple: "/apple-touch-icon.png",
+  shortcut: "/favicon.ico",
+},
+
+  manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({
@@ -77,11 +103,16 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-      <Providers>
-        {children}
-        <BackToTop />
-      </Providers>
-    </body>
+       <Providers>
+      <OrganizationSchema />
+
+      <WebsiteSchema />
+
+      {children}
+
+      <BackToTop />
+    </Providers>
+      </body>
     </html>
   );
 }
