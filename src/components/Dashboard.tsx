@@ -12,22 +12,20 @@ import {
 
 export default function Dashboard() {
   return (
-    <div className="relative w-full max-w-md rounded-3xl border border-gray-100 bg-white p-6 shadow-2xl lg:mt-4">
-
+      <div className="relative mt-12 w-full max-w-md rounded-3xl border border-white/40 bg-white/90 p-6 shadow-[0_20px_60px_rgba(37,99,235,0.15)] backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_80px_rgba(37,99,235,0.25)] lg:mt-10">
       {/* Monthly Growth */}
-      <div className="absolute -top-6 -right-6 rounded-2xl border border-gray-100 bg-white px-5 py-4 shadow-xl">
-        <p className="text-xs text-gray-500">
+      <div className="absolute right-4 -top-10 rounded-2xl border border-white/50 bg-white px-5 py-4 shadow-2xl">        <p className="text-xs text-gray-500">
           Monthly Growth
         </p>
 
-        <div className="mt-2 flex items-center gap-2">
+        <div className="mt-2 flex items-center justify-between">
           <span className="text-2xl font-bold text-green-600">
             +24%
           </span>
 
-          <span className="rounded-full bg-green-100 px-2 py-1 text-xs font-semibold text-green-700">
-            ↑
-          </span>
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-green-100">
+            <span className="text-green-600">↑</span>
+          </div>
         </div>
       </div>
 
@@ -59,7 +57,7 @@ export default function Dashboard() {
         </div>
 
         <div className="h-3 overflow-hidden rounded-full bg-gray-200">
-          <div className="h-full w-[82%] rounded-full bg-blue-600"></div>
+          <div className="h-full w-[82%] animate-pulse rounded-full bg-gradient-to-r from-blue-500 to-cyan-500"></div>
         </div>
 
         <RevenueChart />
@@ -79,7 +77,7 @@ export default function Dashboard() {
           </div>
 
           <div className="h-3 overflow-hidden rounded-full bg-gray-200">
-            <div className="h-full w-[68%] rounded-full bg-gradient-to-r from-blue-500 to-indigo-600"></div>
+            <div className="h-full w-[68%] animate-pulse rounded-full bg-gradient-to-r from-blue-500 to-indigo-600"></div>
           </div>
 
           <div className="mt-4 flex justify-between text-xs text-gray-500">

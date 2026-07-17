@@ -37,15 +37,15 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/90 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-white/20 bg-white/80 shadow-sm backdrop-blur-xl transition-all duration-300">
       <Container>
         <div className="flex h-20 items-center justify-between">
 
           {/* Logo */}
           <Link href="/">
-            <h2 className="cursor-pointer text-2xl font-bold text-blue-600">
-              SF Agency
-            </h2>
+            <h2 className="cursor-pointer bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-3xl font-extrabold tracking-tight text-transparent transition hover:scale-105">
+            SF Agency
+          </h2>
           </Link>
 
           {/* Desktop Menu */}
@@ -54,7 +54,7 @@ export default function Navbar() {
               <Link
                 key={item.label}
                 href={item.href}
-                className={`relative font-medium transition-colors duration-300 ${
+                className={`relative px-1 py-2 font-medium transition-all duration-300 ${
                   pathname === item.href
                     ? "text-blue-600"
                     : "text-gray-600 hover:text-blue-600"
@@ -64,8 +64,7 @@ export default function Navbar() {
                 {item.label}
 
                 {pathname === item.href && (
-                  <span className="absolute -bottom-2 left-0 h-0.5 w-full rounded-full bg-blue-600"></span>
-                )}
+                <span className="absolute -bottom-1 left-0 h-[3px] w-full rounded-full bg-gradient-to-r from-blue-600 to-cyan-500"></span>                )}
                 
               </Link>
             ))}
@@ -79,7 +78,7 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="rounded-lg p-2 transition hover:bg-gray-100 lg:hidden"
+            className="rounded-xl p-2 transition hover:bg-blue-50 hover:text-blue-600 lg:hidden"
           >
             {menuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
@@ -89,7 +88,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="border-t border-gray-200 bg-white lg:hidden">
+        <div className="border-t border-gray-200 bg-white/95 backdrop-blur-xl lg:hidden">
           <Container>
             <nav className="flex flex-col py-6">
 
@@ -98,7 +97,7 @@ export default function Navbar() {
                   key={item.label}
                   href={item.href}
                   onClick={() => setMenuOpen(false)}
-                  className={`border-b border-gray-100 py-4 font-medium transition-colors duration-300 ${
+                  className={`rounded-lg border-b border-gray-100 px-2 py-4 font-medium transition-all duration-300 ${
                   pathname === item.href
                     ? "text-blue-600"
                     : "text-gray-700 hover:text-blue-600"

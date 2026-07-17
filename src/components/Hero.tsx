@@ -10,10 +10,21 @@ import ConsultationButton from "./Consultation/ConsultationButton";
 
 export default function Hero() {
   return (
-    <section
-        id="home"
-        className="relative bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-24"
-      >
+        <section
+          id="home"
+          className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 py-24"
+        >
+
+          <div className="absolute inset-0 opacity-[0.03]">
+          <div
+            className="h-full w-full"
+            style={{
+              backgroundImage:
+                "linear-gradient(to right,#2563eb 1px,transparent 1px),linear-gradient(to bottom,#2563eb 1px,transparent 1px)",
+              backgroundSize: "60px 60px",
+            }}
+          />
+        </div>
       <div className="absolute -top-32 -left-32 h-72 w-72 rounded-full bg-blue-200/40 blur-3xl"></div>
 
       <div className="absolute -bottom-32 -right-32 h-80 w-80 rounded-full bg-indigo-200/40 blur-3xl"></div>
@@ -28,8 +39,12 @@ export default function Hero() {
              Salesforce Consulting Partner
             </Badge>
 
-            <h1 className="text-4xl font-bold leading-tight text-gray-900 md:text-5xl lg:text-6xl">
-              Build Better Customer Relationships with Salesforce
+            <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-gray-900 md:text-6xl lg:text-7xl">
+              Build Better Customer Relationships with
+
+            <span className="block bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
+              Salesforce CRM
+            </span>
             </h1>
 
             <p className="mt-6 text-lg leading-8 text-gray-600">

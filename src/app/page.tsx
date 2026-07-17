@@ -18,6 +18,7 @@ import CaseStudies from "@/components/CaseStudies";
 import FAQ from "@/components/FAQ";
 import Technologies from "@/components/Technologies";
 
+
 export const metadata: Metadata =
   generatePageMetadata({
     title: "Salesforce Consulting & CRM Solutions",
