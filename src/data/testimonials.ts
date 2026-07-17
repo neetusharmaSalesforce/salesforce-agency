@@ -1,20 +1,26 @@
 export const testimonials = [
   {
-    name: "John Smith",
-    company: "TechNova",
+    name: "John Anderson",
+    position: "CEO",
+    company: "TechNova Inc.",
+    rating: 5,
     review:
-      "SF Agency transformed our Salesforce implementation. Their team was professional, responsive and delivered beyond expectations.",
+      "SF Agency transformed our Salesforce implementation. Their expertise helped us automate sales and improve customer relationships.",
   },
   {
-    name: "Sarah Johnson",
-    company: "GrowthHub",
+    name: "Sarah Williams",
+    position: "Operations Director",
+    company: "GrowthEdge",
+    rating: 5,
     review:
-      "Excellent consultants with deep Salesforce expertise. Highly recommended for CRM implementation projects.",
+      "Outstanding Salesforce consultants. Professional, responsive and highly knowledgeable throughout the entire project.",
   },
   {
-    name: "David Brown",
-    company: "CloudWorks",
+    name: "Michael Brown",
+    position: "Sales Manager",
+    company: "NextGen Solutions",
+    rating: 5,
     review:
-      "Our sales team productivity increased dramatically after working with SF Agency.",
+      "Our team's productivity increased significantly after working with SF Agency. Highly recommended.",
   },
 ];

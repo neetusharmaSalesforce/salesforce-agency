@@ -6,6 +6,7 @@ import BackToTop from "@/components/BackToTop";
 import Providers from "@/components/Providers";
 import OrganizationSchema from "@/components/SEO/OrganizationSchema";
 import WebsiteSchema from "@/components/SEO/WebsiteSchema";
+import CookieConsent from "@/components/CookieConsent/CookieConsent";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -109,7 +110,7 @@ export default function RootLayout({
       <WebsiteSchema />
 
       {children}
-
+      <CookieConsent />
       <BackToTop />
     </Providers>
       </body>

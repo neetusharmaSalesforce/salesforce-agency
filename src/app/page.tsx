@@ -49,7 +49,7 @@ export default function Home() {
 
       <WhyChooseUs />
 
-      {/* <Testimonials /> */}
+      <Testimonials />
 
       <FAQ />
       <CTA />
