@@ -1,31 +1,43 @@
+import Link from "next/link";
+import { ChevronRight, Home } from "lucide-react";
+
 type Props = {
   title: string;
 };
 
 export default function Breadcrumb({ title }: Props) {
   return (
-    <nav className="mb-10 text-sm text-gray-500">
-      <ol className="flex items-center gap-2">
-        <li>
-          <a href="/" className="hover:text-blue-600">
-            Home
-          </a>
-        </li>
+    <nav className="mb-12 flex items-center gap-2 text-sm">
 
-        <li>/</li>
+      <Link
+        href="/"
+        className="flex items-center gap-2 text-gray-500 transition hover:text-blue-600"
+      >
+        <Home size={16} />
+        Home
+      </Link>
 
-        <li>
-          <a href="/services" className="hover:text-blue-600">
-            Services
-          </a>
-        </li>
+      <ChevronRight
+        size={16}
+        className="text-gray-400"
+      />
 
-        <li>/</li>
+      <Link
+        href="/services"
+        className="text-gray-500 transition hover:text-blue-600"
+      >
+        Services
+      </Link>
 
-        <li className="font-semibold text-gray-900">
-          {title}
-        </li>
-      </ol>
+      <ChevronRight
+        size={16}
+        className="text-gray-400"
+      />
+
+      <span className="font-semibold text-blue-600">
+        {title}
+      </span>
+
     </nav>
   );
 }
