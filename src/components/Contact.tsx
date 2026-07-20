@@ -151,6 +151,40 @@ const [errors, setErrors] = useState({
           description="Talk to our Salesforce experts about your business goals and discover how we can help."
         />
 
+        <div className="mt-14 grid gap-6 sm:grid-cols-3">
+
+  <div className="rounded-3xl border border-blue-100 bg-white p-8 text-center shadow-sm transition hover:-translate-y-2 hover:shadow-xl">
+    <h3 className="text-4xl font-bold text-blue-600">
+      200+
+    </h3>
+
+    <p className="mt-3 text-gray-600">
+      Successful Salesforce Projects
+    </p>
+  </div>
+
+  <div className="rounded-3xl border border-blue-100 bg-white p-8 text-center shadow-sm transition hover:-translate-y-2 hover:shadow-xl">
+    <h3 className="text-4xl font-bold text-blue-600">
+      24/7
+    </h3>
+
+    <p className="mt-3 text-gray-600">
+      Expert Support
+    </p>
+  </div>
+
+  <div className="rounded-3xl border border-blue-100 bg-white p-8 text-center shadow-sm transition hover:-translate-y-2 hover:shadow-xl">
+    <h3 className="text-4xl font-bold text-blue-600">
+      99%
+    </h3>
+
+    <p className="mt-3 text-gray-600">
+      Client Satisfaction
+    </p>
+  </div>
+
+</div>
+
         <div className="mt-16 grid gap-8 lg:grid-cols-2">
 
           {/* Left Side */}
@@ -180,12 +214,15 @@ const [errors, setErrors] = useState({
           <div className="rounded-2xl bg-white p-8 shadow-sm">
 
             <form
-              noValidate
-              onSubmit={handleSubmit}
-              className="space-y-6"
-            >
+            noValidate
+            onSubmit={handleSubmit}
+            className="space-y-8"
+          >
 
-              <div>
+            <div className="grid gap-6 md:grid-cols-2">
+
+  <div>
+    <div>
                 <label className="mb-2 block text-sm font-medium text-gray-700">
                   Full Name
                 </label>
@@ -204,8 +241,10 @@ const [errors, setErrors] = useState({
                 </p>
               )}
               </div>
- 
-          <div>
+  </div>
+
+  <div>
+    <div>
             <label className="mb-2 block text-sm font-medium text-gray-700">
               Company Name
             </label>
@@ -225,120 +264,145 @@ const [errors, setErrors] = useState({
               </p>
             )}
           </div>
-              <div>
-                <label className="mb-2 block text-sm font-medium text-gray-700">
-                  Email
-                </label>
+  </div>
 
-                <input
-                  type="email"
-                  name="email"
-                  value={form.email}
-                  onChange={handleChange}
-                  placeholder="john@example.com"
-                  className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-blue-500"
-                />
-                {errors.email && (
-                <p className="mt-2 text-sm text-red-600">
-                  {errors.email}
-                </p>
-              )}
-              </div>
+</div>
 
-              <div>
-              <label className="mb-2 block text-sm font-medium text-gray-700">
-                Phone Number
-              </label>
+              
+ 
+          
+              <div className="grid gap-6 md:grid-cols-2">
 
-              <input
-                type="tel"
-                name="phone"
-                value={form.phone}
-                onChange={handleChange}
-                placeholder="+91 9876543210"
-                className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-blue-500"
-              />
+  {/* Email */}
 
-              {errors.phone && (
-                <p className="mt-2 text-sm text-red-600">
-                  {errors.phone}
-                </p>
-              )}
-            </div>
+  <div>
+    <label className="mb-2 block text-sm font-medium text-gray-700">
+      Email
+    </label>
 
+    <input
+      type="email"
+      name="email"
+      value={form.email}
+      onChange={handleChange}
+      placeholder="john@example.com"
+      className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-5 py-4 outline-none transition-all duration-300 focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-100"
+    />
+
+    {errors.email && (
+      <p className="mt-2 text-sm text-red-600">
+        {errors.email}
+      </p>
+    )}
+  </div>
+
+  {/* Phone */}
+
+  <div>
+    <label className="mb-2 block text-sm font-medium text-gray-700">
+      Phone Number
+    </label>
+
+    <input
+      type="tel"
+      name="phone"
+      value={form.phone}
+      onChange={handleChange}
+      placeholder="+91 9876543210"
+      className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-5 py-4 outline-none transition-all duration-300 focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-100"
+    />
+
+    {errors.phone && (
+      <p className="mt-2 text-sm text-red-600">
+        {errors.phone}
+      </p>
+    )}
+  </div>
+
+</div>
             
 
-            <div>
-                <label className="mb-2 block text-sm font-medium text-gray-700">
-                  Service Interested In
-                </label>
+            <div className="grid gap-6 md:grid-cols-2">
 
-                <select
-                  name="service"
-                  value={form.service}
-                  onChange={handleChange}
-                  className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-blue-500"
-                >
-                  <option value="">Select a Service</option>
+  {/* Service */}
 
-                  <option value="Sales Cloud">Sales Cloud</option>
+  <div>
+    <label className="mb-2 block text-sm font-medium text-gray-700">
+      Service Interested In
+    </label>
 
-                  <option value="Service Cloud">Service Cloud</option>
+    <select
+      name="service"
+      value={form.service}
+      onChange={handleChange}
+      className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-5 py-4 outline-none transition-all duration-300 focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-100"
+    >
+      <option value="">Select a Service</option>
 
-                  <option value="Marketing Cloud">Marketing Cloud</option>
+      <option value="Sales Cloud">Sales Cloud</option>
 
-                  <option value="Salesforce Development">
-                    Salesforce Development
-                  </option>
+      <option value="Service Cloud">Service Cloud</option>
 
-                  <option value="CRM Integration">
-                    CRM Integration
-                  </option>
+      <option value="Marketing Cloud">Marketing Cloud</option>
 
-                  <option value="Managed Support">
-                    Managed Support
-                  </option>
-                </select>
+      <option value="Salesforce Development">
+        Salesforce Development
+      </option>
 
-                {errors.service && (
-                  <p className="mt-2 text-sm text-red-600">
-                    {errors.service}
-                  </p>
-                )}
-              </div>
+      <option value="CRM Integration">
+        CRM Integration
+      </option>
 
-              <div>
-              <label className="mb-2 block text-sm font-medium text-gray-700">
-                Project Budget
-              </label>
+      <option value="Managed Support">
+        Managed Support
+      </option>
 
-                <select
-                  name="budget"
-                  value={form.budget}
-                  onChange={handleChange}
-                  className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-blue-500"
-                >
-                  <option value="">Select Budget</option>
+    </select>
 
-                  <option value="$1K-$5K">$1K - $5K</option>
+    {errors.service && (
+      <p className="mt-2 text-sm text-red-600">
+        {errors.service}
+      </p>
+    )}
+  </div>
 
-                  <option value="$5K-$10K">$5K - $10K</option>
+  {/* Budget */}
 
-                  <option value="$10K-$25K">$10K - $25K</option>
+  <div>
+    <label className="mb-2 block text-sm font-medium text-gray-700">
+      Project Budget
+    </label>
 
-                  <option value="$25K+">$25K+</option>
+    <select
+      name="budget"
+      value={form.budget}
+      onChange={handleChange}
+      className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-5 py-4 outline-none transition-all duration-300 focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-100"
+    >
+      <option value="">Select Budget</option>
 
-                  <option value="Let's Discuss">
-                    Let's Discuss
-                  </option>
-                </select>
+      <option value="$1K-$5K">$1K - $5K</option>
 
-                {errors.budget && (
-                  <p className="mt-2 text-sm text-red-600">
-                    {errors.budget}
-                  </p>
-                )}
-              </div>
+      <option value="$5K-$10K">$5K - $10K</option>
+
+      <option value="$10K-$25K">$10K - $25K</option>
+
+      <option value="$25K+">$25K+</option>
+
+      <option value="Let's Discuss">
+        Let's Discuss
+      </option>
+
+    </select>
+
+    {errors.budget && (
+      <p className="mt-2 text-sm text-red-600">
+        {errors.budget}
+      </p>
+    )}
+  </div>
+
+</div>
 
               <div>
                 <label className="mb-2 block text-sm font-medium text-gray-700">
@@ -346,13 +410,13 @@ const [errors, setErrors] = useState({
                 </label>
 
                 <textarea
-                  name="message"
-                  value={form.message}
-                  onChange={handleChange}
-                  rows={5}
-                  placeholder="Tell us about your project..."
-                  className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-blue-500"
-                />
+                name="message"
+                value={form.message}
+                onChange={handleChange}
+                rows={6}
+                placeholder="Tell us about your project, business goals, Salesforce requirements..."
+                className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-5 py-4 outline-none transition-all duration-300 focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-100 resize-none"
+              />
                 {errors.message && (
                 <p className="mt-2 text-sm text-red-600">
                   {errors.message}
@@ -360,20 +424,27 @@ const [errors, setErrors] = useState({
               )}
               </div>
 
-              <Button type = "submit">
-              {loading ? "Sending..." : "Send Message"}
-            </Button>
-            {success && (
-                <p className="text-sm font-medium text-green-600">
-                  {success}
-                </p>
-              )}
+              <div className="pt-2">
 
-              {error && (
-                <p className="text-sm font-medium text-red-600">
-                  {error}
-                </p>
-              )}
+                <Button
+                  type="submit"
+                  className="w-full rounded-2xl py-4 text-lg font-semibold shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+                >
+                  {loading ? "Sending Message..." : "Book Free Consultation"}
+                </Button>
+
+              </div>
+            {success && (
+              <p className="rounded-xl bg-green-50 px-4 py-3 text-sm font-medium text-green-700">
+                {success}
+              </p>
+            )}
+
+            {error && (
+              <p className="rounded-xl bg-red-50 px-4 py-3 text-sm font-medium text-red-700">
+                {error}
+              </p>
+            )}
             </form>
 
           </div>
