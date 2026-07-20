@@ -2,10 +2,12 @@ import { services } from "@/data/services";
 import ServiceHero from "@/components/ServiceDetails/ServiceHero";
 import ServiceFeatures from "@/components/ServiceDetails/ServiceFeatures";
 import ServiceBenefits from "@/components/ServiceDetails/ServiceBenefits";
+import ServiceProcess from "@/components/ServiceDetails/ServiceProcess";
 import Breadcrumb from "@/components/ServiceDetails/Breadcrumb";
 import RelatedServices from "@/components/ServiceDetails/RelatedServices";
 import type { Metadata } from "next";
 import ServiceCTA from "@/components/ServiceDetails/ServiceCTA";
+import FAQ from "@/components/FAQ";
 
 
 type Props = {
@@ -68,8 +70,13 @@ export default async function ServiceDetailsPage({
 
         {/* Benefits */}
         <ServiceBenefits service={service} />
-        
-
+        <ServiceProcess service={service} />
+        <FAQ
+        subtitle="FAQ"
+        title={`Frequently Asked Questions About ${service.title}`}
+        description={`Everything you need to know about our ${service.title} services.`}
+        faqs={service.faqs}
+      />
         <RelatedServices
           currentSlug={service.slug}
           services={services}
