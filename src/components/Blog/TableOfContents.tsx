@@ -1,47 +1,50 @@
+"use client";
+
 import { Blog } from "@/data/blogs";
 
 type Props = {
   blog: Blog;
 };
 
-export default function TableOfContents({ blog }: Props) {
-  const headings = blog.content
-    .split("\n")
-    .filter(
-      (line) =>
-        line.trim().endsWith(":") ||
-        line.trim().startsWith("•")
-    );
+export default function TableOfContents({
+  blog,
+}: Props) {
+  if (
+    !blog.tableOfContents ||
+    blog.tableOfContents.length === 0
+  ) {
+    return null;
+  }
 
   return (
-    <aside className="sticky top-28 rounded-3xl border border-gray-200 bg-white p-8 shadow-sm">
+    <aside className="sticky top-28 h-fit rounded-3xl border border-gray-200 bg-white p-8 shadow-sm">
 
       <h3 className="text-2xl font-bold text-gray-900">
-        Table of Contents
+        On this page
       </h3>
 
-      <div className="mt-8 space-y-4">
+      <nav className="mt-8">
 
-        {headings.length > 0 ? (
-          headings.map((item, index) => (
-            <div
-              key={index}
-              className="flex items-start gap-3"
-            >
-              <span className="mt-1 h-2 w-2 rounded-full bg-blue-600"></span>
+        <ul className="space-y-5">
 
-              <p className="leading-7 text-gray-700">
-                {item.replace(":", "")}
-              </p>
-            </div>
-          ))
-        ) : (
-          <p className="text-gray-500">
-            No headings available.
-          </p>
-        )}
+          {blog.tableOfContents.map((item) => (
 
-      </div>
+            <li key={item.id}>
+
+              <a
+                href={`#${item.id}`}
+                className="block border-l-2 border-transparent pl-4 text-gray-600 transition-all duration-300 hover:border-blue-600 hover:text-blue-600"
+              >
+                {item.title}
+              </a>
+
+            </li>
+
+          ))}
+
+        </ul>
+
+      </nav>
 
     </aside>
   );

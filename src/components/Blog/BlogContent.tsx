@@ -1,5 +1,6 @@
 import { Blog } from "@/data/blogs";
-import TableOfContents from "./TableOfContents";
+import BlogSidebar from "./BlogSidebar";
+import BlogMeta from "./BlogMeta";
 
 type Props = {
   blog: Blog;
@@ -14,7 +15,7 @@ export default function BlogContent({ blog }: Props) {
         {/* Content */}
 
         <article className="prose prose-lg max-w-none lg:col-span-2">
-
+         <BlogMeta blog={blog} />
           {blog.content.split("\n").map((paragraph, index) => {
             if (!paragraph.trim()) return null;
 
@@ -51,10 +52,11 @@ export default function BlogContent({ blog }: Props) {
           })}
 
         </article>
+        
 
         {/* Sidebar */}
 
-        <TableOfContents blog={blog} />
+        <BlogSidebar currentBlog={blog} />
 
       </div>
 

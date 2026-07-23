@@ -1,32 +1,38 @@
 "use client";
 
 import { useEffect, useState } from "react";
+
 import {
   Share2,
   Link2,
   Globe,
   Send,
+  Check,
 } from "lucide-react";
 
 type Props = {
   title: string;
 };
 
+
 export default function BlogShare({ title }: Props) {
+  const [copied, setCopied] =
+  useState(false);
   const [url, setUrl] = useState("");
 
   useEffect(() => {
     setUrl(window.location.href);
   }, []);
 
-  const copyLink = async () => {
-    try {
-      await navigator.clipboard.writeText(url);
-      alert("Link copied!");
-    } catch {
-      alert("Unable to copy link.");
-    }
-  };
+ const copyLink = async () => {
+  await navigator.clipboard.writeText(url);
+
+  setCopied(true);
+
+  setTimeout(() => {
+    setCopied(false);
+  }, 2000);
+};
 
   if (!url) {
     return null;
@@ -94,6 +100,17 @@ export default function BlogShare({ title }: Props) {
         </button>
 
       </div>
+      {copied && (
+  <div className="fixed bottom-8 right-8 z-50 flex items-center gap-3 rounded-2xl bg-green-600 px-6 py-4 text-white shadow-2xl">
+
+    <Check size={20} />
+
+    <span className="font-medium">
+      Link copied successfully
+    </span>
+
+  </div>
+)}
 
     </div>
   );

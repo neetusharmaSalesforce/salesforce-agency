@@ -1,3 +1,5 @@
+import calculateReadingTime from "@/lib/calculateReadingTime";
+
 export interface BlogAuthor {
   name: string;
   role: string;
@@ -11,6 +13,11 @@ export interface Blog {
   title: string;
   excerpt: string;
   content: string;
+
+  tableOfContents?: {
+    id: string;
+    title: string;
+  }[];
 
   featuredImage: string;
 
@@ -26,20 +33,11 @@ export interface Blog {
 
   seoTitle: string;
   seoDescription: string;
+  wordCount: number;
+updatedAt: string;
 }
 
-export const blogs: Blog[] = [
-  {
-    id: 1,
-
-    slug: "salesforce-sales-cloud-guide",
-
-    title: "Complete Guide to Salesforce Sales Cloud",
-
-    excerpt:
-      "Learn how Salesforce Sales Cloud helps businesses automate sales, manage leads and close deals faster.",
-
-    content: `
+const salesCloudContent = `
 Salesforce Sales Cloud is one of the most powerful CRM platforms for sales teams.
 
 It enables businesses to manage leads, opportunities, accounts and customer relationships from a single platform.
@@ -60,7 +58,69 @@ Benefits:
 • Higher Revenue
 
 Sales Cloud is suitable for startups, SMEs and enterprise businesses looking to improve their sales performance.
-`,
+`;
+
+const serviceCloudContent = `
+Salesforce Service Cloud enables companies to provide fast and personalized customer support.
+
+Using Case Management, Knowledge Base and Omni-Channel Routing, businesses can improve customer satisfaction.
+
+Core Features:
+
+• Case Management
+• Live Chat
+• Omni-Channel
+• Knowledge Base
+• Service Console
+
+It is widely used by support teams around the world.
+`;
+
+const crmBenefitsContent = `
+Salesforce CRM helps businesses centralize customer information, automate business processes and improve productivity.
+
+Major Benefits:
+
+• Better Customer Relationships
+• Sales Automation
+• Marketing Automation
+• Better Reporting
+• Increased ROI
+
+Salesforce continues to be the world's #1 CRM platform.
+`;
+
+export const blogs: Blog[] = [
+  {
+    id: 1,
+
+    slug: "salesforce-sales-cloud-guide",
+
+    title: "Complete Guide to Salesforce Sales Cloud",
+
+    excerpt:
+      "Learn how Salesforce Sales Cloud helps businesses automate sales, manage leads and close deals faster.",
+
+    content: salesCloudContent,
+
+    tableOfContents: [
+      {
+        id: "introduction",
+        title: "Introduction",
+      },
+      {
+        id: "features",
+        title: "Key Features",
+      },
+      {
+        id: "benefits",
+        title: "Benefits",
+      },
+      {
+        id: "conclusion",
+        title: "Conclusion",
+      },
+    ],
 
     featuredImage: "/images/blogs/sales-cloud.jpg",
 
@@ -82,14 +142,20 @@ Sales Cloud is suitable for startups, SMEs and enterprise businesses looking to 
 
     publishedAt: "10 July 2026",
 
-    readingTime: "6 min read",
+    readingTime: calculateReadingTime(salesCloudContent),
 
     featured: true,
 
-    seoTitle: "Complete Guide to Salesforce Sales Cloud | SF Agency",
+    seoTitle:
+      "Complete Guide to Salesforce Sales Cloud | SF Agency",
 
     seoDescription:
       "Learn everything about Salesforce Sales Cloud, its features, benefits and implementation process.",
+      wordCount: salesCloudContent
+  .trim()
+  .split(/\s+/).length,
+
+updatedAt: "20 July 2026",
   },
 
   {
@@ -102,21 +168,22 @@ Sales Cloud is suitable for startups, SMEs and enterprise businesses looking to 
     excerpt:
       "Discover how Service Cloud helps businesses deliver exceptional customer support.",
 
-    content: `
-Salesforce Service Cloud enables companies to provide fast and personalized customer support.
+    content: serviceCloudContent,
 
-Using Case Management, Knowledge Base and Omni-Channel Routing, businesses can improve customer satisfaction.
-
-Core Features:
-
-• Case Management
-• Live Chat
-• Omni-Channel
-• Knowledge Base
-• Service Console
-
-It is widely used by support teams around the world.
-`,
+    tableOfContents: [
+      {
+        id: "overview",
+        title: "Overview",
+      },
+      {
+        id: "case-management",
+        title: "Case Management",
+      },
+      {
+        id: "benefits",
+        title: "Benefits",
+      },
+    ],
 
     featuredImage: "/images/blogs/service-cloud.jpg",
 
@@ -136,14 +203,20 @@ It is widely used by support teams around the world.
 
     publishedAt: "18 July 2026",
 
-    readingTime: "5 min read",
+    readingTime: calculateReadingTime(serviceCloudContent),
 
     featured: false,
 
-    seoTitle: "What is Salesforce Service Cloud? | SF Agency",
+    seoTitle:
+      "What is Salesforce Service Cloud? | SF Agency",
 
     seoDescription:
       "Everything you need to know about Salesforce Service Cloud and customer service automation.",
+      wordCount: salesCloudContent
+  .trim()
+  .split(/\s+/).length,
+
+updatedAt: "20 July 2026",
   },
 
   {
@@ -156,19 +229,22 @@ It is widely used by support teams around the world.
     excerpt:
       "Explore why Salesforce CRM is trusted by businesses worldwide for digital transformation.",
 
-    content: `
-Salesforce CRM helps businesses centralize customer information, automate business processes and improve productivity.
+    content: crmBenefitsContent,
 
-Major Benefits:
-
-• Better Customer Relationships
-• Sales Automation
-• Marketing Automation
-• Better Reporting
-• Increased ROI
-
-Salesforce continues to be the world's #1 CRM platform.
-`,
+    tableOfContents: [
+      {
+        id: "crm",
+        title: "What is CRM",
+      },
+      {
+        id: "advantages",
+        title: "Advantages",
+      },
+      {
+        id: "business-growth",
+        title: "Business Growth",
+      },
+    ],
 
     featuredImage: "/images/blogs/salesforce-crm.jpg",
 
@@ -188,13 +264,19 @@ Salesforce continues to be the world's #1 CRM platform.
 
     publishedAt: "25 July 2026",
 
-    readingTime: "7 min read",
+    readingTime: calculateReadingTime(crmBenefitsContent),
 
     featured: false,
 
-    seoTitle: "Top Benefits of Salesforce CRM | SF Agency",
+    seoTitle:
+      "Top Benefits of Salesforce CRM | SF Agency",
 
     seoDescription:
       "Discover the biggest advantages of Salesforce CRM for businesses of all sizes.",
+      wordCount: salesCloudContent
+  .trim()
+  .split(/\s+/).length,
+
+updatedAt: "20 July 2026",
   },
 ];

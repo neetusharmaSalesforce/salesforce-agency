@@ -4,6 +4,8 @@ import {
   CalendarDays,
   Clock,
   ChevronRight,
+  FileText,
+  RefreshCw,
 } from "lucide-react";
 
 import { Blog } from "@/data/blogs";
@@ -102,23 +104,31 @@ export default function BlogHero({ blog }: Props) {
 
             <div className="mt-10 flex flex-wrap gap-8 text-blue-100">
 
-              <div className="flex items-center gap-2">
+          <div className="mt-10 flex flex-wrap gap-8 text-blue-100">
 
-                <CalendarDays size={18} />
-
-                {blog.publishedAt}
-
-              </div>
-
-              <div className="flex items-center gap-2">
-
-                <Clock size={18} />
-
-                {blog.readingTime}
-
-              </div>
-
+            <div className="flex items-center gap-2">
+              <CalendarDays size={18} />
+              <span>{blog.publishedAt}</span>
             </div>
+
+            <div className="flex items-center gap-2">
+              <Clock size={18} />
+              <span>{blog.readingTime}</span>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <FileText size={18} />
+              <span>{blog.wordCount} Words</span>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <RefreshCw size={18} />
+              <span>Updated {blog.updatedAt}</span>
+            </div>
+
+          </div>
+
+        </div>
 
           </div>
 

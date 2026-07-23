@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 import { blogs } from "@/data/blogs";
 
 import BlogHero from "@/components/Blog/BlogHero";
-import BlogContent from "@/components/Blog/BlogList";
+import BlogContent from "@/components/Blog/BlogContent";
 import RelatedBlogs from "@/components/Blog/RelatedBlogs";
 import AuthorCard from "@/components/Blog/AuthorCard";
 import Newsletter from "@/components/Blog/Newsletter";
@@ -83,25 +83,26 @@ export default async function BlogDetailsPage({
       <Navbar />
 
       <main>
+  <BlogHero blog={blog} />
 
-        <BlogHero blog={blog} />
-        <AuthorCard blog={blog} />
+  <AuthorCard blog={blog} />
 
+  <BlogContent blog={blog} />
 
-        <BlogContent blog={blog} />
-        <Newsletter />
-        <BlogShare title={blog.title} />
-        <BlogNavigation
-          currentSlug={blog.slug}
-          blogs={blogs}
-        />
-        <RelatedBlogs
-          currentSlug={blog.slug}
-          blogs={blogs}
-        />
+  <BlogShare title={blog.title} />
 
-      </main>
+  <Newsletter />
 
+  <BlogNavigation
+    currentSlug={blog.slug}
+    blogs={blogs}
+  />
+
+  <RelatedBlogs
+    currentSlug={blog.slug}
+    blogs={blogs}
+  />
+</main>
       <Footer />
     </>
   );

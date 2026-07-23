@@ -1,6 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
-import { CalendarDays, Clock, ArrowRight } from "lucide-react";
+import {
+  CalendarDays,
+  Clock,
+  ArrowRight,
+  User,
+} from "lucide-react";
 
 import { Blog } from "@/data/blogs";
 
@@ -10,12 +15,11 @@ type Props = {
 
 export default function BlogCard({ blog }: Props) {
   return (
-    <article className="group overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
-
+<article className="group flex h-full flex-col overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm transition-all duration-500 hover:-translate-y-2 hover:border-blue-500 hover:shadow-2xl">
       {/* Image */}
 
       <Link href={`/blog/${blog.slug}`}>
-        <div className="relative h-64 overflow-hidden">
+        <div className="relative h-64 overflow-hidden bg-gray-100">
 
           <Image
             src={blog.featuredImage}
@@ -29,7 +33,7 @@ export default function BlogCard({ blog }: Props) {
 
       {/* Content */}
 
-      <div className="p-8">
+      <div className="flex flex-1 flex-col p-8">
 
         {/* Category */}
 
@@ -47,7 +51,7 @@ export default function BlogCard({ blog }: Props) {
 
         {/* Excerpt */}
 
-        <p className="mt-4 leading-8 text-gray-600">
+        <p className="mt-4 flex-1 leading-8 text-gray-600">
           {blog.excerpt}
         </p>
 
@@ -66,6 +70,31 @@ export default function BlogCard({ blog }: Props) {
           </div>
 
         </div>
+
+        <div className="mt-6 flex items-center gap-3 border-t border-gray-100 pt-6">
+
+  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100">
+
+    <User
+      size={18}
+      className="text-blue-600"
+    />
+
+  </div>
+
+  <div>
+
+    <p className="font-semibold text-gray-900">
+      {blog.author.name}
+    </p>
+
+    <p className="text-sm text-gray-500">
+      {blog.author.role}
+    </p>
+
+  </div>
+
+</div>
 
         {/* Read More */}
 
