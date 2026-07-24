@@ -1,7 +1,10 @@
 import Link from "next/link";
+import {
+  ArrowRight,
+  Clock,
+} from "lucide-react";
 
-import { blogs } from "@/data/blogs";
-import { Blog } from "@/data/blogs";
+import { blogs, Blog } from "@/data/blogs";
 
 type Props = {
   currentBlog: Blog;
@@ -14,9 +17,14 @@ export default function BlogSidebar({
     .filter((blog) => blog.id !== currentBlog.id)
     .slice(0, 3);
 
-  const categories = [
-    ...new Set(blogs.map((blog) => blog.category)),
-  ];
+  const categories = Array.from(
+    new Set(blogs.map((blog) => blog.category))
+  ).map((category) => ({
+    name: category,
+    count: blogs.filter(
+      (blog) => blog.category === category
+    ).length,
+  }));
 
   const tags = [
     ...new Set(
@@ -42,15 +50,24 @@ export default function BlogSidebar({
             <Link
               key={blog.id}
               href={`/blog/${blog.slug}`}
-              className="block rounded-xl border border-gray-100 p-4 transition hover:border-blue-500 hover:bg-blue-50"
+              className="block rounded-2xl border border-gray-100 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-blue-500 hover:bg-blue-50 hover:shadow-lg"
             >
-              <h4 className="font-semibold text-gray-900">
+
+              <h4 className="font-semibold leading-7 text-gray-900 transition hover:text-blue-700">
                 {blog.title}
               </h4>
 
               <p className="mt-2 text-sm text-gray-500">
                 {blog.publishedAt}
               </p>
+
+              <div className="mt-3 flex items-center gap-2 text-sm text-blue-600">
+
+                <Clock size={15} />
+
+                {blog.readingTime}
+
+              </div>
 
             </Link>
 
@@ -68,16 +85,24 @@ export default function BlogSidebar({
           Categories
         </h3>
 
-        <div className="flex flex-wrap gap-3">
+        <div className="space-y-3">
 
           {categories.map((category) => (
 
-            <span
-              key={category}
-              className="rounded-full bg-blue-100 px-4 py-2 text-sm font-medium text-blue-700"
+            <div
+              key={category.name}
+              className="flex items-center justify-between rounded-xl border border-gray-100 px-4 py-3 transition hover:border-blue-500 hover:bg-blue-50"
             >
-              {category}
-            </span>
+
+              <span className="font-medium text-gray-800">
+                {category.name}
+              </span>
+
+              <span className="rounded-full bg-blue-100 px-3 py-1 text-sm font-semibold text-blue-700">
+                {category.count}
+              </span>
+
+            </div>
 
           ))}
 
@@ -97,16 +122,46 @@ export default function BlogSidebar({
 
           {tags.map((tag) => (
 
-            <span
+            <Link
               key={tag}
-              className="rounded-full border border-gray-300 px-4 py-2 text-sm text-gray-700 transition hover:border-blue-600 hover:text-blue-600"
+              href={`/blog?tag=${encodeURIComponent(tag)}`}
+              className="rounded-full border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 transition-all hover:border-blue-600 hover:bg-blue-600 hover:text-white"
             >
               #{tag}
-            </span>
+            </Link>
 
           ))}
 
         </div>
+
+      </div>
+
+      {/* CTA */}
+
+      <div className="overflow-hidden rounded-3xl bg-gradient-to-br from-blue-700 via-blue-600 to-cyan-500 p-8 text-white shadow-xl">
+
+        <h3 className="text-3xl font-bold leading-tight">
+          Need Salesforce Experts?
+        </h3>
+
+        <p className="mt-5 leading-8 text-blue-100">
+          Our certified Salesforce consultants help businesses
+          implement, customize, integrate and optimize Salesforce
+          solutions to accelerate growth.
+        </p>
+
+        <Link
+          href="/contact"
+          className="mt-8 inline-flex items-center rounded-xl bg-white px-6 py-4 font-semibold text-blue-700 transition-all duration-300 hover:scale-105 hover:shadow-xl"
+        >
+          Book Free Consultation
+
+          <ArrowRight
+            size={18}
+            className="ml-2"
+          />
+
+        </Link>
 
       </div>
 

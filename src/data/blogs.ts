@@ -6,6 +6,11 @@ export interface BlogAuthor {
   image: string;
 }
 
+export interface BlogFAQ {
+  question: string;
+  answer: string;
+}
+
 export interface Blog {
   id: number;
   slug: string;
@@ -13,11 +18,6 @@ export interface Blog {
   title: string;
   excerpt: string;
   content: string;
-
-  tableOfContents?: {
-    id: string;
-    title: string;
-  }[];
 
   featuredImage: string;
 
@@ -27,14 +27,17 @@ export interface Blog {
   author: BlogAuthor;
 
   publishedAt: string;
+  updatedAt: string;
+
   readingTime: string;
+  wordCount: number;
 
   featured: boolean;
 
   seoTitle: string;
   seoDescription: string;
-  wordCount: number;
-updatedAt: string;
+
+  faqs: BlogFAQ[];
 }
 
 const salesCloudContent = `
@@ -103,25 +106,6 @@ export const blogs: Blog[] = [
 
     content: salesCloudContent,
 
-    tableOfContents: [
-      {
-        id: "introduction",
-        title: "Introduction",
-      },
-      {
-        id: "features",
-        title: "Key Features",
-      },
-      {
-        id: "benefits",
-        title: "Benefits",
-      },
-      {
-        id: "conclusion",
-        title: "Conclusion",
-      },
-    ],
-
     featuredImage: "/images/blogs/sales-cloud.jpg",
 
     category: "Salesforce",
@@ -142,7 +126,16 @@ export const blogs: Blog[] = [
 
     publishedAt: "10 July 2026",
 
-    readingTime: calculateReadingTime(salesCloudContent),
+    updatedAt: "15 July 2026",
+
+    readingTime: calculateReadingTime(
+      salesCloudContent
+    ),
+
+    wordCount:
+      salesCloudContent
+        .trim()
+        .split(/\s+/).length,
 
     featured: true,
 
@@ -151,14 +144,35 @@ export const blogs: Blog[] = [
 
     seoDescription:
       "Learn everything about Salesforce Sales Cloud, its features, benefits and implementation process.",
-      wordCount: salesCloudContent
-  .trim()
-  .split(/\s+/).length,
 
-updatedAt: "20 July 2026",
+    faqs: [
+      {
+        question:
+          "What is Salesforce Sales Cloud?",
+        answer:
+          "Salesforce Sales Cloud is a CRM platform that helps businesses manage leads, opportunities, accounts and sales processes from a single system.",
+      },
+      {
+        question:
+          "Who should use Sales Cloud?",
+        answer:
+          "Sales Cloud is ideal for startups, SMEs and enterprise organizations looking to improve sales productivity and customer relationship management.",
+      },
+      {
+        question:
+          "What are the key features of Sales Cloud?",
+        answer:
+          "Lead Management, Opportunity Tracking, Sales Forecasting, Workflow Automation and Reports & Dashboards are some of the core features.",
+      },
+      {
+        question:
+          "Does Sales Cloud improve productivity?",
+        answer:
+          "Yes. It automates repetitive tasks, centralizes customer information and helps sales teams close deals faster.",
+      },
+    ],
   },
-
-  {
+    {
     id: 2,
 
     slug: "what-is-service-cloud",
@@ -169,21 +183,6 @@ updatedAt: "20 July 2026",
       "Discover how Service Cloud helps businesses deliver exceptional customer support.",
 
     content: serviceCloudContent,
-
-    tableOfContents: [
-      {
-        id: "overview",
-        title: "Overview",
-      },
-      {
-        id: "case-management",
-        title: "Case Management",
-      },
-      {
-        id: "benefits",
-        title: "Benefits",
-      },
-    ],
 
     featuredImage: "/images/blogs/service-cloud.jpg",
 
@@ -203,7 +202,16 @@ updatedAt: "20 July 2026",
 
     publishedAt: "18 July 2026",
 
-    readingTime: calculateReadingTime(serviceCloudContent),
+    updatedAt: "20 July 2026",
+
+    readingTime: calculateReadingTime(
+      serviceCloudContent
+    ),
+
+    wordCount:
+      serviceCloudContent
+        .trim()
+        .split(/\s+/).length,
 
     featured: false,
 
@@ -212,11 +220,33 @@ updatedAt: "20 July 2026",
 
     seoDescription:
       "Everything you need to know about Salesforce Service Cloud and customer service automation.",
-      wordCount: salesCloudContent
-  .trim()
-  .split(/\s+/).length,
 
-updatedAt: "20 July 2026",
+    faqs: [
+      {
+        question:
+          "What is Salesforce Service Cloud?",
+        answer:
+          "Service Cloud is Salesforce's customer support platform that helps businesses manage customer cases and deliver exceptional service experiences.",
+      },
+      {
+        question:
+          "What is Case Management?",
+        answer:
+          "Case Management enables support teams to track, prioritize and resolve customer issues efficiently from a single console.",
+      },
+      {
+        question:
+          "What is Omni-Channel Routing?",
+        answer:
+          "Omni-Channel automatically routes customer requests to the most appropriate support agent based on availability and skills.",
+      },
+      {
+        question:
+          "Who uses Service Cloud?",
+        answer:
+          "Customer support teams, call centers and service organizations across multiple industries use Salesforce Service Cloud.",
+      },
+    ],
   },
 
   {
@@ -230,21 +260,6 @@ updatedAt: "20 July 2026",
       "Explore why Salesforce CRM is trusted by businesses worldwide for digital transformation.",
 
     content: crmBenefitsContent,
-
-    tableOfContents: [
-      {
-        id: "crm",
-        title: "What is CRM",
-      },
-      {
-        id: "advantages",
-        title: "Advantages",
-      },
-      {
-        id: "business-growth",
-        title: "Business Growth",
-      },
-    ],
 
     featuredImage: "/images/blogs/salesforce-crm.jpg",
 
@@ -264,7 +279,16 @@ updatedAt: "20 July 2026",
 
     publishedAt: "25 July 2026",
 
-    readingTime: calculateReadingTime(crmBenefitsContent),
+    updatedAt: "28 July 2026",
+
+    readingTime: calculateReadingTime(
+      crmBenefitsContent
+    ),
+
+    wordCount:
+      crmBenefitsContent
+        .trim()
+        .split(/\s+/).length,
 
     featured: false,
 
@@ -273,10 +297,32 @@ updatedAt: "20 July 2026",
 
     seoDescription:
       "Discover the biggest advantages of Salesforce CRM for businesses of all sizes.",
-      wordCount: salesCloudContent
-  .trim()
-  .split(/\s+/).length,
 
-updatedAt: "20 July 2026",
+    faqs: [
+      {
+        question:
+          "Why is Salesforce CRM popular?",
+        answer:
+          "Salesforce is a cloud-based CRM platform that provides automation, reporting, AI-powered insights and scalability for businesses of every size.",
+      },
+      {
+        question:
+          "Can Salesforce increase sales?",
+        answer:
+          "Yes. Salesforce improves lead management, sales forecasting, customer engagement and overall sales productivity.",
+      },
+      {
+        question:
+          "Is Salesforce suitable for small businesses?",
+        answer:
+          "Yes. Salesforce offers flexible solutions that work for startups, small businesses, mid-sized companies and large enterprises.",
+      },
+      {
+        question:
+          "What are the biggest benefits of Salesforce CRM?",
+        answer:
+          "Improved customer relationships, workflow automation, better reporting, increased collaboration and higher ROI are among the biggest benefits.",
+      },
+    ],
   },
 ];

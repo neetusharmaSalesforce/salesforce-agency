@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Script from "next/script";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -14,7 +15,8 @@ import Newsletter from "@/components/Blog/Newsletter";
 import BlogShare from "@/components/Blog/BlogShare";
 import ReadingProgress from "@/components/Blog/ReadingProgress";
 import BlogNavigation from "@/components/Blog/BlogNavigation";
-import Script from "next/script";
+import FAQ from "@/components/Blog/FAQ";
+
 type Props = {
   params: Promise<{
     slug: string;
@@ -39,6 +41,20 @@ export async function generateMetadata({
   return {
     title: blog.seoTitle,
     description: blog.seoDescription,
+
+    openGraph: {
+      title: blog.seoTitle,
+      description: blog.seoDescription,
+      images: [blog.featuredImage],
+      type: "article",
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: blog.seoTitle,
+      description: blog.seoDescription,
+      images: [blog.featuredImage],
+    },
   };
 }
 
@@ -57,53 +73,84 @@ export default async function BlogDetailsPage({
 
   return (
     <>
-    <ReadingProgress />
-    <Script
-  id="blog-jsonld"
-  type="application/ld+json"
-  dangerouslySetInnerHTML={{
-    __html: JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      headline: blog.title,
-      description: blog.seoDescription,
-      image: blog.featuredImage,
-      datePublished: blog.publishedAt,
-      author: {
-        "@type": "Person",
-        name: blog.author.name,
-      },
-      publisher: {
-        "@type": "Organization",
-        name: "SF Agency",
-      },
-    }),
-  }}
-/>
+      <ReadingProgress />
+
+      <Script
+        id="blog-jsonld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "BlogPosting",
+              headline: blog.title,
+              description: blog.seoDescription,
+              image: blog.featuredImage,
+              datePublished: blog.publishedAt,
+              dateModified: blog.updatedAt,
+
+              author: {
+                "@type": "Person",
+                name: blog.author.name,
+              },
+
+              publisher: {
+                "@type": "Organization",
+                name: "SF Agency",
+              },
+            },
+
+            {
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+
+              mainEntity: blog.faqs.map(
+                (faq) => ({
+                  "@type": "Question",
+
+                  name: faq.question,
+
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: faq.answer,
+                  },
+                })
+              ),
+            },
+          ]),
+        }}
+      />
+
       <Navbar />
 
       <main>
-  <BlogHero blog={blog} />
 
-  <AuthorCard blog={blog} />
+        <BlogHero blog={blog} />
 
-  <BlogContent blog={blog} />
+        <AuthorCard blog={blog} />
 
-  <BlogShare title={blog.title} />
+        <BlogContent blog={blog} />
 
-  <Newsletter />
+        <BlogShare title={blog.title} />
 
-  <BlogNavigation
-    currentSlug={blog.slug}
-    blogs={blogs}
-  />
+        <FAQ faqs={blog.faqs} />
 
-  <RelatedBlogs
-    currentSlug={blog.slug}
-    blogs={blogs}
-  />
-</main>
+        <Newsletter />
+
+        <BlogNavigation
+          currentSlug={blog.slug}
+          blogs={blogs}
+        />
+
+        <RelatedBlogs
+          currentSlug={blog.slug}
+          blogs={blogs}
+        />
+
+      </main>
+
       <Footer />
+
     </>
   );
 }
